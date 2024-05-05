@@ -1,0 +1,101 @@
+{% extends 'heritage/heritage.html.twig' %}
+{% block Title %}Home{% endblock %}
+
+{% block path1 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('PrivatePage') }}">Home</a></li>
+{% endblock %}
+{% block path2 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{#{ path('CreateCampaign') }#}">Create Campaign</a></li>
+{% endblock %}
+{% block path3 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Profile </a></li>
+{% endblock %}
+{% block path4 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('main') }}">Log out </a></li>
+{% endblock %}
+
+{% block sectionDocument %}
+
+<div class="container">
+    <!-- Portfolio Section Heading-->
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Campaigns</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <!-- Portfolio Grid Items-->
+    <div class="row justify-content-center">
+        {% for campaign in campaigns %}
+        <div class="col-md-12 mb-5">
+    <div class="border rounded p-3">
+        <div class="row">
+            <!-- Image Column -->
+            <div class="col-md-6">
+                <div class="campaign-image text-center mt-3">
+                    <img class="img-fluid" src="assets/img/portfolio/{{ campaign.Image }}" alt="{{ campaign.Description }}" />
+                </div>
+            </div>
+            <!-- Description and Button Column -->
+            <div class="col-md-6">
+                <div class="campaign-info mt-3">
+                    <!-- Campaign Name and Description -->
+                    <h3>{{ campaign.CampaignName }}</h3>
+                    <p>{{ campaign.Description }}</p>
+                    <!-- View Details Button -->
+                    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#portfolioModal{{ loop.index }}">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Portfolio Modal -->
+<div class="portfolio-modal modal fade" id="portfolioModal{{ loop.index }}" tabindex="-1" aria-labelledby="portfolioModal{{ loop.index }}" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Portfolio Modal - Title-->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{ campaign.CampaignName }}</h2>
+                            <!-- Icon Divider-->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <!-- Portfolio Modal - Image-->
+                            <img class="img-fluid rounded mb-5" src="assets/img/portfolio/{{ campaign.Image }}" alt="Image Not Found" />
+                            <!-- Portfolio Modal - Text-->
+                            <p class="mb-4">{{ campaign.Description }}</p>
+                            <!-- Budget and Owner Information -->
+                            <p><strong>Budget:</strong> {{ campaign.Budget }} Dt</p>
+                            <p><strong>Owner:</strong> {{ campaign.Ownerid.fullname }}</p>
+                            <p><strong>ContactOwner:</strong> {{ campaign.Ownerid.email }}</p>
+                            <!-- Fund Campaign Button -->
+                            <button class="btn btn-primary" <a class="btn btn-primary" {#href="{{ path(nomroute', {'id': campaign.id}) }}"#} data-bs-dismiss="modal">
+                                Fund Campaign
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+{% block aboutDocument %}{% endblock %}
+{% block formDocument %}{% endblock %}
