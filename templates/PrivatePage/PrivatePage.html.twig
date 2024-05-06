@@ -5,7 +5,7 @@
     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('PrivatePage') }}">Home</a></li>
 {% endblock %}
 {% block path2 %}
-    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('createcampaign') }}">Create Campaign</a></li>
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{#{ path('CreateCampaign') }#}">Create Campaign</a></li>
 {% endblock %}
 {% block path3 %}
     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Profile </a></li>
@@ -81,12 +81,9 @@
                             <p><strong>Owner:</strong> {{ campaign.Ownerid.fullname }}</p>
                             <p><strong>ContactOwner:</strong> {{ campaign.Ownerid.email }}</p>
                             <!-- Fund Campaign Button -->
-                            <button class="btn btn-primary" data-bs-dismiss="modal">
-                                <a class="btn btn-primary" href="{{ path('nomroute', {'id': campaign.id}) }}">
-                                    Fund Campaign
-                                </a>
+                            <button class="btn btn-primary" <a class="btn btn-primary" {#href="{{ path(nomroute', {'id': campaign.id}) }}"#} data-bs-dismiss="modal">
+                                Fund Campaign
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -98,27 +95,7 @@
         {% endfor %}
     </div>
 </div>
-    {% if app.session.get('from_create_campaign') is defined and app.session.get('from_create_campaign') %}
-        <div id="thank-you-modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Merci pour votre participation !</p>
-            </div>
-        </div>
-    {% endif %}
-{% endblock %}
-{% block javascripts %}
-    <script>
 
-        var modal = document.getElementById("thank-you-modal");
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        window.onload = function() {
-            modal.style.display = "block";
-        }
-    </script>
 {% endblock %}
 {% block aboutDocument %}{% endblock %}
 {% block formDocument %}{% endblock %}
