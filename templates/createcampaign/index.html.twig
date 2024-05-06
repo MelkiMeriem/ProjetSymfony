@@ -1,0 +1,48 @@
+
+{# templates/createcampaign/index.html.twig #}
+
+{% extends 'heritage/heritage.html.twig' %}
+
+{% block title %}Create Campaign{% endblock %}
+
+{% block path1 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('PrivatePage') }}">Home</a></li>
+{% endblock %}
+{% block path2 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('createcampaign') }}">Create Campaign</a></li>
+{% endblock %}
+{% block path3 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Profile</a></li>
+{% endblock %}
+{% block path4 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('main') }}">Log out </a></li>
+{% endblock %}
+
+{% block body %}
+    <h1>Create a New Campaign</h1>
+    {{ form_start(form) }}
+    <div>
+        {{ form_label(form.campaignName) }}
+        {{ form_widget(form.campaignName, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(form.campaignName) }}
+    </div>
+    <div>
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(form.description) }}
+    </div>
+    <div>
+        {{ form_label(form.budget) }}
+        {{ form_widget(form.budget, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(form.budget) }}
+    </div>
+    <div>
+        {{ form_label(form.image) }}
+        {{ form_widget(form.image, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(  form.image) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Campaign</button>
+    {{ form_end(form) }}
+{% endblock %}
+
