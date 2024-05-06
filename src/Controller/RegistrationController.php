@@ -39,7 +39,7 @@ class RegistrationController extends AbstractController
             $user->setPassword(
                 $userPasswordHashed->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
 
@@ -79,12 +79,15 @@ class RegistrationController extends AbstractController
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
+
+
+
             return $this->redirectToRoute('app_register');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('main');
+        return $this->redirectToRoute('PrivatePage');
     }
 }

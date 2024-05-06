@@ -11044,3 +11044,8 @@ html {
 .copyright {
   background-color: #1a252f;
 }
+.campaign-image-img {
+  width: 50%;
+  height: auto;
+  max-width: 50%;
+}
