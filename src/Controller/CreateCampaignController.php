@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Campaigns;
 use App\Form\CampaignsType;
+use App\Repository\CampaignsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +15,7 @@ class CreateCampaignController extends AbstractController
 {
     #[Route('/createcampaign', name:'createcampaign')]
 
-    public function create(Request $request): Response
+    public function create(Request $request ): Response
     {
         $campaigns = new Campaigns();
         $form = $this->createForm(CampaignsType::class, $campaigns);
