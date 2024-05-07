@@ -12,19 +12,22 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CampaignType extends AbstractType
+class CampaignsType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('CampaignName', TextType::class, [
                 'label' => 'Campaign Name',
+                'mapped' => true,
             ])
             ->add('Description', TextareaType::class, [
                 'label' => 'Description',
+                'mapped' => true,
             ])
             ->add('Budget', MoneyType::class, [
                 'label' => 'Budget',
+                'mapped' => true,
                 // Optional: customize options for the MoneyType
                 'currency' => 'USD',
                 'scale' => 2,
@@ -32,7 +35,7 @@ class CampaignType extends AbstractType
             ->add('Image', FileType::class, [
                 'label' => 'Image',
                 // Optional: customize options for the FileType
-                'mapped' => false, // This tells Symfony not to try to map this field to any property on your entity
+                'mapped' => true, // This tells Symfony not to try to map this field to any property on your entity
                 'required' => false, // This allows the field to be optional
             ]);
     }
