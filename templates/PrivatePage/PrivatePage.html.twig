@@ -78,8 +78,8 @@
                             <p class="mb-4">{{ campaign.Description }}</p>
                             <!-- Budget and Owner Information -->
                             <p><strong>Budget:</strong> {{ campaign.Budget }} Dt</p>
-                            <p><strong>Owner:</strong> {{ campaign.Ownerid.fullname }}</p>
-                            <p><strong>ContactOwner:</strong> {{ campaign.Ownerid.email }}</p>
+                            <p><strong>Owner:</strong> {{ campaign.OwnerId.fullname }}</p>
+                            <p><strong>ContactOwner:</strong> {{ campaign.OwnerId.email }}</p>
                             <!-- Fund Campaign Button -->
                             <button class="btn btn-primary" data-bs-dismiss="modal">
                                 <a class="btn btn-primary" href="{{ path('nomroute', {'id': campaign.id}) }}">

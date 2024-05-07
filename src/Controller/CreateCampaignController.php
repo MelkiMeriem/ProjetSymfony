@@ -10,12 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CreateCampaignController extends AbstractController
 {
     #[Route('/createcampaign', name:'createcampaign')]
 
-    public function create(Request $request ): Response
+    public function create(Request $request ,EntityManagerInterface $entityManager,SessionInterface $session) : Response
     {
         $campaigns = new Campaigns();
         $form = $this->createForm(CampaignsType::class, $campaigns);
@@ -23,11 +24,12 @@ class CreateCampaignController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->persist($campaigns);
             $entityManager->flush();
 
-            $this->get('session')->set('from_create_campaign', true);
+
+            $session->set('from_create_campaign', true);
             return $this->redirectToRoute('PrivatePage');
         }
 
