@@ -1,0 +1,64 @@
+{% extends 'heritage/heritage.html.twig' %}
+
+{% block title %}Admin Page{% endblock %}
+
+                {% block path1 %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('main') }}">Home</a></li>
+                {% endblock %}
+                {% block path2 %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('main') }}#about">About</a></li>
+                {% endblock %}
+                {% block path3 %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_register') }}#contact">Sign up</a></li>
+                {% endblock %}
+                {% block path4 %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_login') }}">Log in</a></li>
+                {% endblock %}
+
+
+{% block HeaderDocument %}
+    <nav class="main-nav">
+        <ul class="nav justify-content-center" style="font-size: 28px;">
+            <li class="nav-item" style="text-align: center;">
+                <a href="{{ path('app_admin_showUsers') }}" class="nav-link text-white" style="margin-right: 60px; font-weight: bold;">Users</a>
+            </li>
+            <li class="nav-item" style="text-align: center;">
+                <a href="{{ path('app_admin_showCampaigns') }}" class="nav-link text-white" style="margin-right: 60px; font-weight: bold;">Campaigns</a>
+            </li>
+            <li class="nav-item" style="text-align: center;">
+                <a href="{{ path('app_admin_showFunds') }}" class="nav-link text-white" style="font-weight: bold;">Funds</a>
+            </li>
+        </ul>
+    </nav>
+
+    <style>
+        .main-nav .nav-item:hover {
+            border: 2px solid #ffffff; /* Change border color on hover */
+            border-radius: 5px; /* Optional: Add rounded corners to the border */
+        }
+    </style>
+{% endblock %}
+
+
+
+
+    {% block sectionDocument %}
+        section
+    {% endblock %}
+
+{% block aboutDocument %}
+
+
+{% endblock %}
+
+
+
+{% block formDocument %}
+
+
+    {#  {{ form(form) }}#}
+
+{% endblock %}
+
+{% block body %}
+{% endblock %}
