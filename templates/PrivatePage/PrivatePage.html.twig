@@ -98,27 +98,7 @@
         {% endfor %}
     </div>
 </div>
-    {% if app.session.get('from_create_campaign') is defined and app.session.get('from_create_campaign') %}
-        <div id="thank-you-modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Merci pour votre participation !</p>
-            </div>
-        </div>
-    {% endif %}
 {% endblock %}
-{% block javascripts %}
-    <script>
 
-        var modal = document.getElementById("thank-you-modal");
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        window.onload = function() {
-            modal.style.display = "block";
-        }
-    </script>
-{% endblock %}
 {% block aboutDocument %}{% endblock %}
 {% block formDocument %}{% endblock %}

@@ -10,13 +10,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CreateCampaignController extends AbstractController
 {
     #[Route('/createcampaign', name:'createcampaign')]
+    //#[IsGranted("ROLE_USER")]
 
-    public function create(Request $request ,EntityManagerInterface $entityManager,SessionInterface $session) : Response
+    public function create(Request $request ,EntityManagerInterface $entityManager) : Response
     {
         $campaigns = new Campaigns();
         $form = $this->createForm(CampaignsType::class, $campaigns);
@@ -24,12 +25,12 @@ class CreateCampaignController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-
+            //$user = $this->getUser();
+            //$campaigns->setOwnerId($user->getId());
             $entityManager->persist($campaigns);
             $entityManager->flush();
+            $this->addFlash('success', 'Campaign created');
 
-
-            $session->set('from_create_campaign', true);
             return $this->redirectToRoute('PrivatePage');
         }
 
