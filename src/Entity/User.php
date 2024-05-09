@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -34,6 +36,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\OneToMany(targetEntity: Fund::class, mappedBy: 'UserId')]
+    private Collection $funds;
+
+    public function __construct()
+    {
+        $this->funds = new ArrayCollection();
+    }
 
   
 
@@ -131,10 +141,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
     public function isIsVerified(): ?bool
     {
         return $this->is_verified;
     }
+
+    /**
+     * @return Collection<int, Fund>
+     */
+    public function getFunds(): Collection
+    {
+        return $this->funds;
+    }
+
+    public function addFund(Fund $fund): static
+    {
+        if (!$this->funds->contains($fund)) {
+            $this->funds->add($fund);
+            $fund->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFund(Fund $fund): static
+    {
+        if ($this->funds->removeElement($fund)) {
+            // set the owning side to null (unless already changed)
+            if ($fund->getUserId() === $this) {
+                $fund->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 }
