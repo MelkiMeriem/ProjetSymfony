@@ -14,8 +14,6 @@ class Fund
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $CampainId = null;
 
     #[ORM\Column(length: 255)]
     private ?string $UserEmail = null;
@@ -29,17 +27,24 @@ class Fund
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $Date = null;
 
+    #[ORM\ManyToOne(inversedBy: 'FundID')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Campaigns $CampainId = null;
+
+    #[ORM\Column]
+    private ?int $CampaignId = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCampainId(): ?int
+    public function getCampainId(): ?Campaigns
     {
         return $this->CampainId;
     }
 
-    public function setCampainId(int $CampainId): static
+    public function setCampainId(Campaigns $CampainId): static
     {
         $this->CampainId = $CampainId;
 
@@ -93,4 +98,18 @@ class Fund
 
         return $this;
     }
+
+    public function getCampaignId(): ?int
+    {
+        return $this->CampaignId;
+    }
+
+    public function setCampaignId(int $CampaignId): static
+    {
+        $this->CampaignId = $CampaignId;
+
+        return $this;
+    }
+
+
 }

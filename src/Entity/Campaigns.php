@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CampaignsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,14 @@ class Campaigns
 
     #[ORM\ManyToOne]
     private ?User $OwnerId = null;
+
+    #[ORM\OneToMany(targetEntity: Fund::class, mappedBy: 'CampainId')]
+    private Collection $FundID;
+
+    public function __construct()
+    {
+        $this->FundID = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -93,4 +103,36 @@ class Campaigns
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Fund>
+     */
+    public function getFundID(): Collection
+    {
+        return $this->FundID;
+    }
+
+    public function addFundID(Fund $fundID): static
+    {
+        if (!$this->FundID->contains($fundID)) {
+            $this->FundID->add($fundID);
+            $fundID->setCampainId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFundID(Fund $fundID): static
+    {
+        if ($this->FundID->removeElement($fundID)) {
+            // set the owning side to null (unless already changed)
+            if ($fundID->getCampainId() === $this) {
+                $fundID->setCampainId(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
+

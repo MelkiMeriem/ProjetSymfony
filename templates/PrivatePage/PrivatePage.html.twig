@@ -82,7 +82,7 @@
                             <p><strong>ContactOwner:</strong> {{ campaign.OwnerId.email }}</p>
                             <!-- Fund Campaign Button -->
                             <button class="btn btn-primary" data-bs-dismiss="modal">
-                                <a class="btn btn-primary" href="{{ path('nomroute', {'id': campaign.id}) }}">
+                                <a class="btn btn-primary" href="{{ path('FundCampaign', {'id': campaign.id}) }}">
                                     Fund Campaign
                                 </a>
                             </button>

@@ -12,11 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FundCampaignController extends AbstractController
 {
-    #[Route('/FundCampaign' ,name: 'FundCampaign') ]
-    public function FundCampaign(ManagerRegistry $doctrine,Request $request ):Response
+    #[Route('/FundCampaign/{id?0}' ,name: 'FundCampaign') ]
+    public function FundCampaign(ManagerRegistry $doctrine,Request $request ,$id):Response
     {
+        // Assuming you get the campaign ID from the route or elsewhere
+        $campaignId = $request->attributes->get('id');
+
         $fund=new Fund();
-        $form=$this->createForm(FundType::class,$fund);
+        $form=$this->createForm(FundType::class,$fund,[// Pass campaign ID as an option
+            'campaignId' => $campaignId,]);
         $form->remove('Date');
 
         $form->handleRequest($request);
