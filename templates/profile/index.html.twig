@@ -1,0 +1,184 @@
+{% extends 'heritage/heritage.html.twig' %}
+{% block Title %} Profile {{fullname}} {% endblock %}
+
+{% block path1 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('PrivatePage') }}">Home</a></li>
+{% endblock %}
+{% block path2 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('createcampaign') }}">Create Campaign</a></li>
+{% endblock %}
+{% block path3 %}
+    {#  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('Profile_Page') }}">Profile </a></li>#}
+{% endblock %}
+{% block path4 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_logout') }}">Log out </a></li>
+{% endblock %}
+
+{% block HeaderDocument %}
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+
+            <img class="masthead-avatar mb-5" src="assets/img/portfolio/R.png" alt="..." />
+
+            <h1 class="masthead-heading text-uppercase mb-0">Thank you, {{ fullname }}, for being a part of Manara</h1>
+
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+
+            <p class="masthead-subheading font-weight-light mb-0">Tunisian Charity Campaign</p>
+        </div>
+    </header>
+
+{% endblock %}
+
+
+ {% block sectionDocument %}
+
+         <div class="container">
+             <h2 class="section-heading text-center text-uppercase">Your Donations</h2>
+             <div class="row">
+                 <div class="col-3">
+                     <div class="card" >
+                         <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.339775cf482650ae7e86ca193a070f5d?rik=06Mj4lSsRdKKxA&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                         <div class="card-body">
+                             <h5 class="card-title">Card title</h5>
+                             <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                                 Some quick example text to build on the card
+                             </p>
+                             <a href="#" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-3">
+                     <div class="card" >
+                         <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.8f78706198aed68df9ae64b171e8f779?rik=QiZapBx%2b8DqVwQ&riu=http%3a%2f%2fclipart-library.com%2fimages_k%2fdonate-button-transparent%2fdonate-button-transparent-4.png&ehk=lfrEjFB%2fhBOrZ2HQ12hN3B8WJjzYT2kngXsZbhcXXoA%3d&risl=&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                         <div class="card-body">
+                             <h5  class="card-title">Card title</h5>
+                             <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                                 Some quick example text to build on the card
+                             </p>
+                             <a href="#" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-3">
+                     <div class="card" >
+                         <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.339775cf482650ae7e86ca193a070f5d?rik=06Mj4lSsRdKKxA&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                         <div class="card-body">
+                             <h5 class="card-title">Card title</h5>
+                             <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                                 Some quick example text to build on the card
+                             </p>
+                             <a href="#" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-3">
+                     <div class="card" >
+                         <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.339775cf482650ae7e86ca193a070f5d?rik=06Mj4lSsRdKKxA&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                         <div class="card-body">
+                             <h5 class="card-title">Card title</h5>
+                             <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                                 Some quick example text to build on the card I'm just adding random text- to see what happpens when there is a long line sof text and bye
+                             </p>
+                             <a href="#" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-3">
+                     <div class="card" >
+                         <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.339775cf482650ae7e86ca193a070f5d?rik=06Mj4lSsRdKKxA&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                         <div class="card-body">
+                             <h5 class="card-title">Card title</h5>
+                             <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                                 Some quick example text to build on the card
+                             </p>
+                             <a href="#" class="btn btn-primary">Go somewhere</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     <div class="container" style="max-width: 800px;"> <!-- Adjust max-width as needed -->
+         <hr class="my-5"> <!-- Adjust margin top for spacing -->
+     </div>
+     <div class="container">
+         <h2 class="section-heading text-center text-uppercase">Your Campaigns</h2>
+         <div class="row">
+             <div class="col-3">
+                 <div class="card" >
+                     <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.339775cf482650ae7e86ca193a070f5d?rik=06Mj4lSsRdKKxA&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                     <div class="card-body">
+                         <h5 class="card-title">Card title</h5>
+                         <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                             Some quick example text to build on the card
+                         </p>
+                         <a href="#" class="btn btn-primary">Go somewhere</a>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-3">
+                 <div class="card" >
+                     <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.8f78706198aed68df9ae64b171e8f779?rik=QiZapBx%2b8DqVwQ&riu=http%3a%2f%2fclipart-library.com%2fimages_k%2fdonate-button-transparent%2fdonate-button-transparent-4.png&ehk=lfrEjFB%2fhBOrZ2HQ12hN3B8WJjzYT2kngXsZbhcXXoA%3d&risl=&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                     <div class="card-body">
+                         <h5  class="card-title">Card title</h5>
+                         <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                             Some quick example text to build on the card
+                         </p>
+                         <a href="#" class="btn btn-primary">Go somewhere</a>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-3">
+                 <div class="card" >
+                     <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.339775cf482650ae7e86ca193a070f5d?rik=06Mj4lSsRdKKxA&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                     <div class="card-body">
+                         <h5 class="card-title">Card title</h5>
+                         <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                             Some quick example text to build on the card
+                         </p>
+                         <a href="#" class="btn btn-primary">Go somewhere</a>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-3">
+                 <div class="card" >
+                     <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.339775cf482650ae7e86ca193a070f5d?rik=06Mj4lSsRdKKxA&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                     <div class="card-body">
+                         <h5 class="card-title">Card title</h5>
+                         <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                             Some quick example text to build on the card I'm just adding random text- to see what happpens when there is a long line sof text and bye
+                         </p>
+                         <a href="#" class="btn btn-primary">Go somewhere</a>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-3">
+                 <div class="card" >
+                     <img class="card-img-top" style="height: 12rem;" src="{{ asset('https://th.bing.com/th/id/R.339775cf482650ae7e86ca193a070f5d?rik=06Mj4lSsRdKKxA&pid=ImgRaw&r=0') }}" alt="Card image cap">
+                     <div class="card-body">
+                         <h5 class="card-title">Card title</h5>
+                         <p  style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;" class="card-text">
+                             Some quick example text to build on the card
+                         </p>
+                         <a href="#" class="btn btn-primary">Go somewhere</a>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+ {% endblock %}
+
+
+{% block aboutDocument %}
+
+
+{% endblock %}
+
+
+ {% block formDocument %}
+ {% endblock %}
