@@ -12,27 +12,43 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
+
+
 
 class FundCampaignController extends AbstractController
 {
-    #[Route('/FundCampaign/{id}' ,name: 'FundCampaign') ]
-    public function FundCampaign(ManagerRegistry $doctrine,UserPasswordHasherInterface $hashing,Request $request ,$id):Response
+    private $hash;
+    private $security;
+
+    public function __construct(UserPasswordHasherInterface $hash, Security $security)
     {
+        $this->hash = $hash;
+        $this->security = $security;
+    }
+
+    #[Route('/FundCampaign/{id}' ,name: 'FundCampaign') ]
+    public function FundCampaign(ManagerRegistry $doctrine,UserPasswordHasherInterface $hashing,Request $request ,Security $security):Response
+    {
+        $currentUser = $this->security->getUser();
+
         $campaignId = $request->attributes->get('id');
+        $campaign=$doctrine->getRepository(Campaigns::class)->find($campaignId);
 
         $fund=new Fund();
         $form=$this->createForm(FundType::class,$fund,
-            ['campaignId' => $campaignId,]);
+             ['campaignId' => $campaignId,]
+              );
         $form->remove('Date');
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
 
-            $user=$doctrine->getRepository(User::class)->findOneByemail($fund->getUserEmail());
+            $enteredPassword = $form->get('UserPassword')->getData();
 
-            if ($fund->getUserPassword() == $user->getPassword()) {
 
+            if ($this->hash->isPasswordValid($currentUser, $enteredPassword))  {
             $fund->setUserPassword(
                 $hashing->hashPassword(
                     $fund,
@@ -41,20 +57,24 @@ class FundCampaignController extends AbstractController
             );
 
             $manager=$doctrine->getManager();
-            $fund->setCampainId($doctrine->getRepository(Campaigns::class)->find($campaignId));
-            $fund->setUserId($user);
+            $fund->setCampainId($campaign);
+            $fund->setUserId($currentUser);
+            $fund->setUserEmail($currentUser->getEmail());
+            $fund->setDate(new \DateTime('now'));
             $manager->persist($fund);
+            $campaign->setBudget($campaign->getBudget() + $fund->getAmount());
+            $manager->persist($campaign);
+
             $manager->flush();
-            return $this->redirectToRoute('main');}
+            return $this->redirectToRoute('PrivatePage');}
             else{
                 $this->addFlash('error','Mot de passe invalide');
                return $this->redirectToRoute('FundCampaign',['id'=>$campaignId]);
-            }
+           }
         }
         else {
             return $this->render("FundCampaign/FundCampaign.html.twig", ['form' => $form->createView()]);
         }
     }
-
 
 }
