@@ -5,9 +5,10 @@ namespace App\Entity;
 use App\Repository\FundRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: FundRepository::class)]
-class Fund
+class Fund implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,6 +18,7 @@ class Fund
 
     #[ORM\Column(length: 255)]
     private ?string $UserEmail = null;
+
 
     #[ORM\Column(length: 50)]
     private ?string $UserPassword = null;
@@ -31,8 +33,10 @@ class Fund
     #[ORM\JoinColumn(nullable: false)]
     private ?Campaigns $CampainId = null;
 
-    #[ORM\Column]
-    private ?int $CampaignId = null;
+
+    #[ORM\ManyToOne(inversedBy: 'funds')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $UserId = null;
 
     public function getId(): ?int
     {
@@ -99,17 +103,21 @@ class Fund
         return $this;
     }
 
-    public function getCampaignId(): ?int
+    public function getUserId(): ?User
     {
-        return $this->CampaignId;
+        return $this->UserId;
     }
 
-    public function setCampaignId(int $CampaignId): static
+    public function setUserId(?User $UserId): static
     {
-        $this->CampaignId = $CampaignId;
+        $this->UserId = $UserId;
 
         return $this;
     }
 
 
+    public function getPassword(): ?string
+    {
+        // TODO: Implement getPassword() method.
+    }
 }
