@@ -82,7 +82,7 @@
                             <p><strong>ContactOwner:</strong> {{ campaign.OwnerId.email }}</p>
                             <!-- Fund Campaign Button -->
                             <button class="btn btn-primary" data-bs-dismiss="modal">
-                                <a class="btn btn-primary" href="{{ path('nomroute', {'id': campaign.id}) }}">
+                                <a class="btn btn-primary" href={{ path('PrivatePage', {'id': campaign.id}) }}>
                                     Fund Campaign
                                 </a>
                             </button>
@@ -99,6 +99,20 @@
     </div>
 </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        var modal = document.getElementById("thank-you-modal");
+                                var span = document.getElementsByClassName("close")[0];
+                                span.onclick = function() {
+                                modal.style.display = "none";
+                                }
+                                window.onload = function() {
+                                modal.style.display = "block";
+                                }
+                                </script>
+                                {% endblock %}
 
 {% block aboutDocument %}{% endblock %}
 {% block formDocument %}{% endblock %}

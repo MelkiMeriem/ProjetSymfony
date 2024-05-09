@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class CampaignsType extends AbstractType
 {
@@ -33,10 +34,22 @@ class CampaignsType extends AbstractType
                 'scale' => 2,
             ])
             ->add('Image', FileType::class, [
-                'label' => 'Image',
+                'label' => 'Image ',
                 // Optional: customize options for the FileType
-                'mapped' => true, // This tells Symfony not to try to map this field to any property on your entity
+                'mapped' => false, // This tells Symfony not to try to map this field to any property on your entity
                 'required' => false, // This allows the field to be optional
+                'constraints' => [
+                    new File([
+
+                        'mimeTypes' => [
+                            'image/jpg',
+                            'image/png',
+                            'image/jpeg',
+                            'image/gif',
+                        ],
+
+                    ])
+                ],
             ]);
     }
 
