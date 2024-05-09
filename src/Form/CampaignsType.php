@@ -15,13 +15,13 @@ class CampaignsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, [
+            ->add('campaignName', TextType::class, [
                 'label' => 'Campaign Title',
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Campaign Description',
             ])
-            ->add('goalAmount', MoneyType::class, [
+            ->add('Budget', MoneyType::class, [
                 'label' => 'Goal Amount',
                 'currency' => 'USD', // You can adjust the currency as needed
             ]);

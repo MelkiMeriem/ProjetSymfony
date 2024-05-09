@@ -45,7 +45,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse();
+            return new RedirectResponse('/PrivatePage');
         }
 
 
@@ -55,7 +55,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
 
         // For example:
-         return new RedirectResponse($this->urlGenerator->generate('PrivatePage'));
+        return new RedirectResponse($this->urlGenerator->generate('PrivatePage'));
     }
 
     protected function getLoginUrl(Request $request): string
