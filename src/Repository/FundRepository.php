@@ -22,7 +22,7 @@ class FundRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Fund[] Returns an array of Fund objects
+//     * @return Fundh[] Returns an array of Fundh objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class FundRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Fund
+//    public function findOneBySomeField($value): ?Fundh
 //    {
 //        return $this->createQueryBuilder('f')
 //            ->andWhere('f.exampleField = :val')

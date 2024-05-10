@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class MainController extends AbstractController
 {
     #[Route('/main', name: 'main')]
+    #[Route('/')]
     public function index(): Response
     {
         return $this->render('main/index.html.twig', [
@@ -24,6 +25,7 @@ class MainController extends AbstractController
     #[Route('/PrivatePage' ,name: 'PrivatePage') ]
     public function PrivatePage(ManagerRegistry $doctrine)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $campaigns = $doctrine->getRepository(Campaigns::class)->findAll();
 
         return $this->render("PrivatePage/PrivatePage.html.twig", [

@@ -1,5 +1,4 @@
-
-{# templates/createcampaign/admin.html.twig #}
+{# templates/createcampaign/index.html.twig #}
 
 {% extends 'heritage/heritage.html.twig' %}
 
@@ -15,10 +14,10 @@
     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Profile</a></li>
 {% endblock %}
 {% block path4 %}
-    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('main') }}">Log out </a></li>
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_logout') }}">Log out </a></li>
 {% endblock %}
 
-{% block formDocument %}
+{% block sectionDocument %}
     <div class="container">
         <div class="text-center mt-4">
             <h1>Create a New Campaign</h1>
@@ -57,7 +56,6 @@
         </div>
     </div>
 {% endblock %}
-
 
 
 
