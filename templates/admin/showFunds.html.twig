@@ -1,0 +1,55 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block sectionDocument %}
+    <div class="container mt-4">
+        <h1>List of Funds</h1>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+               {# <th>Email</th> #}
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Campaign Name</th>
+                <!-- Add more headers if needed -->
+            </tr>
+            </thead>
+            <tbody>
+            {% for fund in funds %}
+                <tr>
+                    <td>{{ fund.id }}</td>
+                    {# <td>{{ fund.userEmail }}</td> #}
+                    <td>{{ fund.amount }}</td>
+                    <td>{{ fund.date ? fund.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ fund.campainId.campaignName }}</td>
+                    <td>
+                        <a href="{{ path('app_admin_showCampaigns', { 'id': fund.campainId.id }) }}" class="btn btn-primary btn-sm mr-2">
+                            View Campaign
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_showUsers', { 'id': fund.userId.id }) }}" class="btn btn-primary btn-sm mr-2">
+                            View User
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                    </td>
+                    <!-- Add more columns if needed -->
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if funds|length == 0 %}
+            <p>No funds available.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+
+{% block title %}
+
+{% endblock %}

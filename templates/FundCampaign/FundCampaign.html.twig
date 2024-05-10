@@ -1,0 +1,57 @@
+{% extends 'heritage/heritage.html.twig' %}
+
+{% block Title %} FundCampaign {% endblock %}
+
+{% block path1 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('PrivatePage') }}">Home</a></li>
+{% endblock %}
+{% block path2 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('createcampaign') }}">Create Campaign</a></li>
+{% endblock %}
+{% block path3 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Profile </a></li>
+{% endblock %}
+{% block path4 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_logout') }}">Log out </a></li>
+{% endblock %}
+
+
+{% block HeaderDocument %}
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Fund Campaign</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Please fill in this form to Fund the Campaign.</p>
+    </div>
+{%  endblock %}
+
+{% block aboutDocument %}
+
+{%  endblock %}
+
+{% block formDocument %}
+    {% for message in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="container">
+        {{ form_errors(form) }}
+        {{ form_start(form) }}
+        {{ form_row(form.UserEmail) }}
+        {{ form_row(form.UserPassword) }}
+        {{ form_row(form.CampainId) }}
+        {{ form_row(form.Amount) }}
+        {{ form_end(form) }}
+
+    </div>
+{%  endblock %}
+
+
+

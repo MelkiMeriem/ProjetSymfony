@@ -1,0 +1,92 @@
+{% extends 'heritage/heritage.html.twig' %}
+
+{% block title %}Admin Page{% endblock %}
+
+                {% block path1 %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('main') }}">Home</a></li>
+                {% endblock %}
+                {% block path2 %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('main') }}#about">About</a></li>
+                {% endblock %}
+                {% block path3 %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_register') }}#contact">Sign up</a></li>
+                {% endblock %}
+                {% block path4 %}
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_login') }}">Log in</a></li>
+                {% endblock %}
+
+
+{% block HeaderDocument %}
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <!-- Title -->
+            <h1 class="navbar-brand big-title">DASHBOARD</h1>
+
+            <!-- Toggle button for small screens -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link big-clear" href="{{ path('app_admin_showUsers') }}">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link big-clear" href="{{ path('app_admin_showCampaigns') }}">Campaigns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link big-clear" href="{{ path('app_admin_showFunds') }}">Funds</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        .big-title {
+            font-size: 48px; /* Really big font size */
+            font-weight: bold;
+        }
+
+        .big-clear {
+            font-size: 32px; /* Larger font size */
+            font-weight: bold;
+            margin: 0 30px; /* Increase distance between links */
+        }
+
+        .big-clear:hover {
+            color: #007bff; /* Change color on hover */
+            font-size: 36px; /* Increase font size on hover */
+        }
+    </style>
+
+
+{% endblock %}
+
+
+
+
+    {% block sectionDocument %}
+        section
+    {% endblock %}
+
+{% block aboutDocument %}
+
+
+{% endblock %}
+
+
+
+{% block formDocument %}
+
+
+    {#  {{ form(form) }}#}
+
+{% endblock %}
+
+{% block body %}
+{% endblock %}

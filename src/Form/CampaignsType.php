@@ -1,4 +1,5 @@
 <?php
+// src/Form/CampaignType.php
 
 namespace App\Form;
 
@@ -7,23 +8,48 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class CampaignsType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class, [
-                'label' => 'Campaign Title',
+            ->add('CampaignName', TextType::class, [
+                'label' => 'Campaign Name',
+                'mapped' => true,
             ])
-            ->add('description', TextareaType::class, [
-                'label' => 'Campaign Description',
+            ->add('Description', TextareaType::class, [
+                'label' => 'Description',
+                'mapped' => true,
             ])
-            ->add('goalAmount', MoneyType::class, [
-                'label' => 'Goal Amount',
-                'currency' => 'USD', // You can adjust the currency as needed
+            ->add('Budget', MoneyType::class, [
+                'label' => 'Budget',
+                'mapped' => true,
+                // Optional: customize options for the MoneyType
+                'currency' => 'USD',
+                'scale' => 2,
+            ])
+            ->add('Image', FileType::class, [
+                'label' => 'Image ',
+                // Optional: customize options for the FileType
+                'mapped' => false, // This tells Symfony not to try to map this field to any property on your entity
+                'required' => false, // This allows the field to be optional
+                'constraints' => [
+                    new File([
+
+                        'mimeTypes' => [
+                            'image/jpg',
+                            'image/png',
+                            'image/jpeg',
+                            'image/gif',
+                        ],
+
+                    ])
+                ],
             ]);
     }
 
@@ -33,7 +59,9 @@ class CampaignsType extends AbstractType
             'data_class' => Campaigns::class,
         ]);
     }
-    public function mapDataToForms($viewData, $forms, array $options)
+
+
+public function mapDataToForms($viewData, $forms, array $options)
     {
         $campaign = $viewData;
 

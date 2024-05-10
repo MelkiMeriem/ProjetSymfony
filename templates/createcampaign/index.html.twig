@@ -1,9 +1,8 @@
-
 {# templates/createcampaign/index.html.twig #}
 
 {% extends 'heritage/heritage.html.twig' %}
 
-{% block title %}Create Campaign{% endblock %}
+{% block title%}Create Campaign{% endblock %}
 
 {% block path1 %}
     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('PrivatePage') }}">Home</a></li>
@@ -15,34 +14,49 @@
     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Profile</a></li>
 {% endblock %}
 {% block path4 %}
-    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('main') }}">Log out </a></li>
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_logout') }}">Log out </a></li>
 {% endblock %}
 
-{% block body %}
-    <h1>Create a New Campaign</h1>
-    {{ form_start(form) }}
-    <div>
-        {{ form_label(form.campaignName) }}
-        {{ form_widget(form.campaignName, { 'attr': {'class': 'form-control'} }) }}
-        {{ form_errors(form.campaignName) }}
+{% block sectionDocument %}
+    <div class="container">
+        <div class="text-center mt-4">
+            <h1>Create a New Campaign</h1>
+        </div>
+        {{ form_start(form) }}
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    {{ form_label(form.CampaignName, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.CampaignName, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(form.CampaignName) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.Description, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.Description, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(form.Description) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.Budget, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.Budget, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(form.Budget) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.Image, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.Image, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(form.Image) }}
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Create Campaign</button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+        <div class="container my-4">
+            {% include 'createcampaign/flash.html.twig' %}
+        </div>
     </div>
-    <div>
-        {{ form_label(form.description) }}
-        {{ form_widget(form.description, { 'attr': {'class': 'form-control'} }) }}
-        {{ form_errors(form.description) }}
-    </div>
-    <div>
-        {{ form_label(form.budget) }}
-        {{ form_widget(form.budget, { 'attr': {'class': 'form-control'} }) }}
-        {{ form_errors(form.budget) }}
-    </div>
-    <div>
-        {{ form_label(form.image) }}
-        {{ form_widget(form.image, { 'attr': {'class': 'form-control'} }) }}
-        {{ form_errors(  form.image) }}
-    </div>
-
-    <button type="submit" class="btn btn-primary">Create Campaign</button>
-    {{ form_end(form) }}
 {% endblock %}
+
+
+
 

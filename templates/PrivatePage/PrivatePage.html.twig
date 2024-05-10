@@ -82,7 +82,7 @@
                             <p><strong>ContactOwner:</strong> {{ campaign.Ownerid.email }}</p>
                             <!-- Fund Campaign Button -->
                             <button class="btn btn-primary" data-bs-dismiss="modal">
-                                <a class="btn btn-primary" href="{{ path('PrivatePage', {'id': campaign.id}) }}">
+                                <a class="btn btn-primary" href="{{ path('FundCampaign', {'id': campaign.id}) }}">
                                     Fund Campaign
                                 </a>
                             </button>
@@ -120,5 +120,6 @@
         }
     </script>
 {% endblock %}
-{% block aboutDocument %}{% endblock %}
+{% block aboutDocument %}
+{% endblock %}
 {% block formDocument %}{% endblock %}
