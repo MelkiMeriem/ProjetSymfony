@@ -14,6 +14,22 @@
     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_logout') }}">Log out </a></li>
 {% endblock %}
 
+
+{% block HeaderDocument %}
+        {% for message in app.session.flashBag.get('success') %}
+      <div class="alert alert-success">
+          {{ message }}
+      </div>
+  {% endfor %}
+
+    {% for message in app.session.flashBag.get('campaign_success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+        {{ parent() }}
+    {% endblock %}
 {% block sectionDocument %}
 
 <div class="container">

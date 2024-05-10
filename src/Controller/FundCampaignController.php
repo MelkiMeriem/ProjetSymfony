@@ -65,8 +65,11 @@ class FundCampaignController extends AbstractController
             $campaign->setBudget($campaign->getBudget() + $fund->getAmount());
             $manager->persist($campaign);
 
-            $manager->flush();
-            return $this->redirectToRoute('PrivatePage');}
+            $manager->flush(); $this->addFlash('success','fund effectué avec succès');
+
+                return $this->redirectToRoute('PrivatePage');
+
+            }
             else{
                 $this->addFlash('error','Mot de passe invalide');
                return $this->redirectToRoute('FundCampaign',['id'=>$campaignId]);
