@@ -92,7 +92,7 @@ class AdminController extends AbstractController
             $constraints['id'] = (int)$id;
         }
         if ($userId !== '0') {
-            $constraints['OwnerId'] = (int)$userId;
+            $constraints['UserId'] = (int)$userId;
         }
 
         if ($campaignId !== '0') {
