@@ -31,7 +31,6 @@ class CreateCampaignController extends AbstractController
 
             $user = $security->getUser();
             $campaigns->setOwnerId($user);
-            $user->getRoles();
             $entityManager->persist($campaigns);
             $Image = $form->get('Image')->getData();
 
@@ -59,13 +58,13 @@ class CreateCampaignController extends AbstractController
             }
 
             $entityManager->flush();
-            $this->addFlash('success', 'Campaign created');
-
+            $this->addFlash('campaign_success', 'campaign created');
             return $this->redirectToRoute('PrivatePage');
         }
 
         return $this->render('createcampaign/index.html.twig', [
             'form' => $form->createView(),
-        ]);
+              ]);
+
     }
 }

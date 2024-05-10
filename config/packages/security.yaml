@@ -19,6 +19,7 @@ security:
             custom_authenticator: App\Security\LoginAuthenticator
             logout:
                 path: app_logout
+                target: main
                 # where to redirect after logout
                 # target: app_any_route
             remember_me:
@@ -26,7 +27,17 @@ security:
                 lifetime: 604800
                 path: /
                 always_remember_me: true
-
+        PrivatePage:
+            pattern: ^/PrivatePage
+            form_login:
+                login_path: login
+                check_path: login
+                always_use_default_target_path: true
+                default_target_path: PrivatePage 
+            logout:
+                path: app_logout
+                target: main
+            
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
