@@ -2,6 +2,7 @@
 
 {% block sectionDocument %}
     <div class="container">
+        <h1>List of Users</h1>
         <div class="row">
             {% for user in users %}
                 <div class="col-md-4 mb-4">
@@ -12,8 +13,8 @@
                             <!-- Add more user information here as needed -->
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="{{ path('app_admin_showCampaigns', { 'userId': user.id, 'id':0 }) }}" class="btn btn-primary btn-sm mr-2">View Campaigns</a>
-                                <a href="{{ path('app_admin_showCampaigns', { 'userId': user.id }) }}" class="btn btn-primary btn-sm mr-2">View Funds</a>
-                                <a href="#" class="btn btn-danger btn-sm">
+                                <a href="{{ path('app_admin_showFunds', { 'userId': user.id,'id':0 }) }}" class="btn btn-primary btn-sm mr-2">View Funds</a>
+                                <a href="{{ path('app_admin_deleteUser', {'id' : user.id}) }}" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </a>
                             </div>
