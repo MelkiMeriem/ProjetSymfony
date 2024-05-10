@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "10030b87966b6c064e865f2c2675eb05",
+=======
+    "content-hash": "6734e70ec6386f97e6012f1521d3bc61",
+>>>>>>> refs/remotes/origin/Idani
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1251,6 +1255,7 @@
         },
         {
             "name": "doctrine/sql-formatter",
+<<<<<<< HEAD
             "version": "1.3.0",
             "source": {
                 "type": "git",
@@ -1271,6 +1276,28 @@
                 "phpstan/phpstan": "^1.0",
                 "phpunit/phpunit": "^8.5 || ^9.6",
                 "vimeo/psalm": "^4.11"
+=======
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/sql-formatter.git",
+                "reference": "d1ac84aef745c69ea034929eb6d65a6908b675cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/sql-formatter/zipball/d1ac84aef745c69ea034929eb6d65a6908b675cc",
+                "reference": "d1ac84aef745c69ea034929eb6d65a6908b675cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^12",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.5",
+                "vimeo/psalm": "^5.24"
+>>>>>>> refs/remotes/origin/Idani
             },
             "bin": [
                 "bin/sql-formatter"
@@ -1300,9 +1327,15 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/sql-formatter/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/doctrine/sql-formatter/tree/1.3.0"
             },
             "time": "2024-05-06T21:49:18+00:00"
+=======
+                "source": "https://github.com/doctrine/sql-formatter/tree/1.4.0"
+            },
+            "time": "2024-05-08T08:12:09+00:00"
+>>>>>>> refs/remotes/origin/Idani
         },
         {
             "name": "egulias/email-validator",

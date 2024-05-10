@@ -1,0 +1,71 @@
+{% extends 'heritage/heritage.html.twig' %}
+{% block Title %} Profile {{fullname}} {% endblock %}
+
+{% block path1 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('PrivatePage') }}">Home</a></li>
+{% endblock %}
+{% block path2 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('createcampaign') }}">Create Campaign</a></li>
+{% endblock %}
+{% block path3 %}
+    {#  <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('Profile_Page') }}">Profile </a></li>#}
+{% endblock %}
+{% block path4 %}
+    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ path('app_logout') }}">Log out </a></li>
+{% endblock %}
+
+{% block HeaderDocument %}
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+
+            <img class="masthead-avatar mb-5" src="assets/img/portfolio/R.png" alt="..." />
+
+            <h1 class="masthead-heading text-uppercase mb-0">Thank you, {{ fullname }}, for being a part of Manara</h1>
+
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+
+            <p class="masthead-subheading font-weight-light mb-0">Tunisian Charity Campaign</p>
+        </div>
+    </header>
+
+{% endblock %}
+
+
+ {% block sectionDocument %}
+
+     <div class="container">
+         <h2 class="section-heading text-center text-uppercase">Your Donations</h2>
+         <div class="row">
+             {% for campaign in campaigns %}
+                 <div class="col-3">
+                     <div class="card">
+                         <img class="card-img-top" style="height: 12rem;" src="assets/img/portfolio/{{ campaign.Image }}" alt="Campaign Image">
+                         <div class="card-body">
+                             <h5 class="card-title">{{ campaign.campaignName }}</h5>
+                             <p style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;"  class="card-text">{{ campaign.description }}</p>
+                             <p class="card-text">Budget: {{ campaign.budget }}</p>
+                             <a href="#" class="btn btn-primary">Go somewhere</a>
+                             <a href="{{ path('delete_campaign', {'id': campaign.id}) }}" class="btn btn-danger btn-sm">
+                                 <i class="fas fa-trash-alt"></i> Delete
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+             {% endfor %}
+         </div>
+     </div>
+
+ {% endblock %}
+
+
+{% block aboutDocument %}
+
+{% endblock %}
+
+
+ {% block formDocument %}
+ {% endblock %}
