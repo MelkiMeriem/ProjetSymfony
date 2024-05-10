@@ -1,5 +1,7 @@
 
 {% extends 'heritage/heritage.html.twig' %}
+   {% block path5 %}
+   {% endblock %}
 
 {% block title %}Register{% endblock %}
 
@@ -17,9 +19,8 @@
     {{ form_row(registrationForm.fullname) }}
     {{ form_row(registrationForm.email) }}
     {{ form_row(registrationForm.password) }}
-
-
-
+    <P>By accessing or using our website Manara.tn , you agree to be bound by our  Conditions. <br>
+    If you disagree with any part of these terms, please do not use our website.</P>
 
     {{ form_end(registrationForm) }}
 {% endblock %}
